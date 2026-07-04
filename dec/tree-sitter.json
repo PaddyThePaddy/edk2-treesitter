@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "dec",
+      "camelcase": "Dec",
+      "scope": "source.dec",
+      "path": ".",
+      "file-types": ["dec"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

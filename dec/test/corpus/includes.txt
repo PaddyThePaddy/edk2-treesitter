@@ -1,0 +1,69 @@
+================================================================================
+[Includes] plus arch-qualified [Includes.*] sections (MdePkg.dec)
+================================================================================
+
+[Includes]
+  Include
+  Test/UnitTest/Include
+  Test/Mock/Include
+  Library/MipiSysTLib/mipisyst/library/include
+
+[Includes.IA32]
+  Include/Ia32
+
+[Includes.X64]
+  Include/X64
+
+[Includes.EBC]
+  Include/Ebc
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word)))
+    (statement
+      (field
+        (bare_word)))
+    (statement
+      (field
+        (bare_word)))
+    (statement
+      (field
+        (bare_word))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word)))))

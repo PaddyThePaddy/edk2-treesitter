@@ -1,0 +1,322 @@
+================================================================================
+[PcdsFeatureFlag] boolean PCD (MdePkg.dec)
+================================================================================
+
+[PcdsFeatureFlag]
+  ## Indicates if the component name protocol will be installed.<BR><BR>
+  #   TRUE  - Does not install component name protocol.<BR>
+  #   FALSE - Install component name protocol.<BR>
+  # @Prompt Disable Component Name Protocol.
+  gEfiMdePkgTokenSpaceGuid.PcdComponentNameDisable|FALSE|BOOLEAN|0x0000000d
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (statement
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+[PcdsFixedAtBuild] numeric PCD with @ValidList doc comment (MdePkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild]
+  ## Status code value for indicating a watchdog timer has expired.
+  # EFI_COMPUTING_UNIT_HOST_PROCESSOR | EFI_CU_HP_EC_TIMER_EXPIRED
+  # @Prompt Progress Code for WatchDog Timer Expired.
+  # @ValidList  0x80000003 | 0x00011003
+  gEfiMdePkgTokenSpaceGuid.PcdStatusCodeValueEfiWatchDogTimerExpired|0x00011003|UINT32|0x00000013
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (statement
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+VOID* PCD with quoted-string default (MdePkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild]
+  ## Default current ISO 639-2 language: English & French.
+  # @Prompt Default Value of LangCodes Variable.
+  gEfiMdePkgTokenSpaceGuid.PcdUefiVariableDefaultLangCodes|"engfraengfra"|VOID*|0x0000001c
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (statement
+      (field
+        (bare_word))
+      (field
+        (string))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+VOID* PCD with byte-array default, under an arch-qualified multi-tag header (MdePkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild.AARCH64, PcdsPatchableInModule.AARCH64]
+  ## GUID identifying the Rng algorithm implemented by CPU instruction.
+  # @Prompt CPU Rng algorithm's GUID.
+  gEfiMdePkgTokenSpaceGuid.PcdCpuRngSupportedAlgorithm|{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}|VOID*|0x00000037
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier)))
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (statement
+      (field
+        (bare_word))
+      (field
+        (array
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))
+          (field
+            (bare_word))))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+Multi-tag section header without spaces after commas (MdePkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild,PcdsPatchableInModule]
+  ## Indicates the maximum length of unicode string used in the following
+  #  BaseLib functions: StrLen(), StrSize(), StrCmp(), StrnCmp(), StrCpy(), StrnCpy()<BR><BR>
+  # @Prompt Maximum Length of Unicode String.
+  gEfiMdePkgTokenSpaceGuid.PcdMaximumUnicodeStringLength|1000000|UINT32|0x00000001
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier)))
+      (tag
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (comment)
+    (statement
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+Multi-tag section header with spaces after commas (EmulatorPkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild, PcdsPatchableInModule]
+  gEmulatorPkgTokenSpaceGuid.PcdEmuBootMode|1|UINT32|0x00001006
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier)))
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (field
+        (bare_word)))))
+
+================================================================================
+Structured PCD with trailing <HeaderFiles>/<Packages> block (CryptoPkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild]
+  gEfiCryptoPkgTokenSpaceGuid.PcdCryptoServiceFamilyEnable|{0x00}|PCD_CRYPTO_SERVICE_FAMILY_ENABLE|0x00000002 {
+    <Packages>
+      CryptoPkg/CryptoPkg.dec
+    <HeaderFiles>
+      Include/Pcd/PcdCryptoServiceFamilyEnable.h
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word))
+      (field
+        (array
+          (field
+            (bare_word))))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word))))))))
+
+================================================================================
+Structured PCD with array default plus <HeaderFiles>/<Packages> block (RedfishPkg.dec)
+================================================================================
+
+[PcdsFixedAtBuild]
+  gEfiRedfishPkgTokenSpaceGuid.PcdRedfishRestExServiceDevicePath|{0x0}|REST_EX_SERVICE_DEVICE_PATH_DATA|0x00001000 {
+    <HeaderFiles>
+      Pcd/RestExServiceDevicePath.h
+    <Packages>
+      MdePkg/MdePkg.dec
+      MdeModulePkg/MdeModulePkg.dec
+      RedfishPkg/RedfishPkg.dec
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (bare_word))
+      (field
+        (array
+          (field
+            (bare_word))))
+      (field
+        (bare_word))
+      (field
+        (bare_word))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word)))
+          (statement
+            (field
+              (bare_word))))))))

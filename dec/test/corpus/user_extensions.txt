@@ -1,0 +1,22 @@
+================================================================================
+[UserExtensions.TianoCore."ExtraFiles"] with a quoted tag segment (MdePkg.dec)
+================================================================================
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  MdePkgExtra.uni
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (string))))
+    (statement
+      (field
+        (bare_word)))))

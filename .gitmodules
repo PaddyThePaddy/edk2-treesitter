@@ -1,0 +1,27 @@
+[submodule "references/edk2-DecSpecification"]
+	path = references/edk2-DecSpecification
+	url = https://github.com/tianocore-docs/edk2-DecSpecification.git
+[submodule "references/edk2-DscSpecification"]
+	path = references/edk2-DscSpecification
+	url = https://github.com/tianocore-docs/edk2-DscSpecification.git
+[submodule "references/edk2-FdfSpecification"]
+	path = references/edk2-FdfSpecification
+	url = https://github.com/tianocore-docs/edk2-FdfSpecification.git
+[submodule "references/edk2-InfSpecification"]
+	path = references/edk2-InfSpecification
+	url = https://github.com/tianocore-docs/edk2-InfSpecification.git
+[submodule "references/edk2-MetaDataExpressionSyntaxSpecification"]
+	path = references/edk2-MetaDataExpressionSyntaxSpecification
+	url = https://github.com/tianocore-docs/edk2-MetaDataExpressionSyntaxSpecification.git
+[submodule "references/edk2-UniSpecification"]
+	path = references/edk2-UniSpecification
+	url = https://github.com/tianocore-docs/edk2-UniSpecification.git
+[submodule "references/edk2-VfrSpecification"]
+	path = references/edk2-VfrSpecification
+	url = https://github.com/tianocore-docs/edk2-VfrSpecification.git
+[submodule "references/edk2-BuildSpecification"]
+	path = references/edk2-BuildSpecification
+	url = https://github.com/tianocore-docs/edk2-BuildSpecification.git
+[submodule "corpus/edk2"]
+	path = corpus/edk2
+	url = https://github.com/tianocore/edk2.git
