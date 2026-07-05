@@ -1,4 +1,43 @@
 ================================================================================
+DEFINE with a genuinely empty value, immediately followed by !else/!endif
+on the next line (SiPkgBuildOption.dsc)
+================================================================================
+
+[BuildOptions]
+!if gSiPkgTokenSpaceGuid.PcdBdatEnable == TRUE
+  DEFINE BDAT_BUILD_OPTION = -DBDAT_SUPPORT=1
+!else
+  DEFINE BDAT_BUILD_OPTION =
+!endif
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (if_directive
+      (binary_expression
+        (field
+          (compound_word
+            (bare_word)))
+        (field
+          (compound_word
+            (bare_word)))))
+    (define_statement
+      (identifier)
+      (value
+        (raw_text)))
+    (else_directive)
+    (define_statement
+      (identifier)
+      (value
+        (raw_text)))
+    (endif_directive)))
+
+================================================================================
 Nested !ifdef/!else chain with DEFINE macros (OvmfPkg/OvmfPkgX64.dsc)
 ================================================================================
 

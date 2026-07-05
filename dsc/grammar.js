@@ -217,7 +217,16 @@ module.exports = grammar({
 
     identifier: (_$) => /[A-Za-z_][A-Za-z0-9_]*/,
 
-    bare_word: (_$) => token(/[^\s#|=,()\[\]{}$"]+/),
+    // `(:[ \t]*...)` tolerates whitespace after a `Family:` prefix used
+    // purely for visual column-alignment in real [BuildOptions] sections,
+    // e.g. `GCC:   *_*_IA32_PP_FLAGS` (extra spaces so it lines up with
+    // `CLANGPDB:*_*_IA32_CC_FLAGS`) -- see SiPkgBuildOption.dsc. Without
+    // this, `:` isn't excluded from the base charset, but a *greedy* match
+    // swallows straight through it with nothing left to let the
+    // whitespace-tolerant continuation apply, so the base charset excludes
+    // `:` and the continuation re-adds it explicitly alongside its own
+    // optional leading whitespace.
+    bare_word: (_$) => token(/[^\s#:|=,()\[\]{}$"]+(:[ \t]*[^\s#|=,()\[\]{}$"]+)?/),
 
     _bare_word_immediate: ($) =>
       alias(token.immediate(/[^\s#|=,()\[\]{}$"]+/), $.bare_word),
@@ -226,23 +235,55 @@ module.exports = grammar({
     // mid-value (not just immediately glued to the rest, unlike macros),
     // e.g. a [BuildOptions] flag string ending in
     // `... X11IncludeHack "-DEFIAPI=__attribute__((ms_abi))"`.
+    //
+    // The whole "real content" side is reached through `_immediate_hspace`
+    // + immediate-only alternatives on purpose, not through the normal
+    // (extras-tolerant) `array`/`string`/`raw_text`/`macro_invocation`.
+    // `extras` skips *any* whitespace, including newlines, so a value
+    // that's genuinely empty (`DEFINE FOO =` with nothing else on the
+    // line) would otherwise let the parser hop clean over the newline and
+    // attach whatever real content happens to come next -- even a
+    // following `!endif` directive on its own line -- as this value's
+    // content instead of correctly falling through to the empty
+    // alternative. Marking the entry point immediate means it can only
+    // succeed if real content follows on the *same* line (after optional
+    // horizontal whitespace), so a bare newline correctly forces the empty
+    // alternative instead. See SiPkgBuildOption.dsc for the real file that
+    // surfaced this (several `DEFINE X =` lines immediately followed by
+    // `!else`/`!endif`).
     value: ($) =>
       choice(
-        $.array,
-        $.string,
         seq(
-          choice($.macro_invocation, $.raw_text),
+          optional($._immediate_hspace),
+          choice($._array_immediate, $._string_immediate, $._macro_invocation_immediate, $._raw_text_immediate),
           repeat(choice($._macro_invocation_immediate, $._raw_text_immediate, $.string)),
         ),
         alias($._empty_value, $.raw_text),
       ),
 
-    raw_text: (_$) => token(/[^\s\n#{}"$][^\n#{}"$]*/),
+    _immediate_hspace: (_$) => token.immediate(/[ \t]+/),
+
+    _array_immediate: ($) => alias($._immediate_array_body, $.array),
+
+    _immediate_array_body: ($) =>
+      seq(token.immediate("{"), optional(seq($.field, repeat(seq(",", $.field)))), "}"),
+
+    _string_immediate: ($) => alias(token.immediate(/L?"[^"\n]*"/), $.string),
+
+    // Excludes `\r` as well as `\n` -- CRLF line endings are common in real
+    // .dsc files, and a lone `\r` isn't otherwise whitespace-excluded here
+    // since (unlike the leading character) the continuation class doesn't
+    // exclude `\s` wholesale (it has to allow plain spaces mid-value, e.g.
+    // [BuildOptions] flag strings). Missing `\r` from the exclusion set
+    // let `_raw_text_immediate` swallow a bare CR as if it were real
+    // content immediately after `=`, defeating the empty-value check this
+    // token exists for in the first place.
+    raw_text: (_$) => token(/[^\s\n#{}"$][^\n\r#{}"$]*/),
 
     _empty_value: (_$) => token(prec(-1, /(?:)/)),
 
     _raw_text_immediate: ($) =>
-      alias(token.immediate(/[^\n#{}"$]+/), $.raw_text),
+      alias(token.immediate(/[^\r\n#{}"$]+/), $.raw_text),
 
     string: (_$) => token(/L?"[^"\n]*"/),
 

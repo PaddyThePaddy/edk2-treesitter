@@ -1,4 +1,49 @@
 ================================================================================
+[BuildOptions] `Family:` prefix followed by extra whitespace used for
+visual column-alignment with a longer sibling entry (SiPkgBuildOption.dsc)
+================================================================================
+
+[BuildOptions.Common.EDKII]
+CLANGPDB:*_*_IA32_CC_FLAGS    = $(DSC_SIPKG_FEATURE_BUILD_OPTIONS) -DASF_PEI
+GCC:   *_*_IA32_PP_FLAGS      = $(DSC_SIPKG_FEATURE_BUILD_OPTIONS)
+MSFT:  *_*_IA32_ASM_FLAGS     = $(DSC_SIPKG_FEATURE_BUILD_OPTIONS)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))))
+
+================================================================================
 [BuildOptions] with the `==` replace operator, plus a genuinely empty value
 (EmulatorPkg/EmulatorPkg.dsc)
 ================================================================================
