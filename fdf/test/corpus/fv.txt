@@ -1,0 +1,200 @@
+================================================================================
+[FV] volume attributes, an APRIORI PEI block, INF entries, and a
+conditional INF wrapped in !if/!endif (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[FV.PEIFV]
+FvNameGuid         = 6938079B-B503-4E3D-9D24-B28337A25806
+BlockSize          = 0x10000
+FvAlignment        = 16
+ERASE_POLARITY     = 1
+MEMORY_MAPPED      = TRUE
+
+APRIORI PEI {
+  INF  MdeModulePkg/Universal/PCD/Pei/Pcd.inf
+}
+
+!if $(DEBUG_TO_MEM)
+  INF  OvmfPkg/MemDebugLogPei/MemDebugLogPei.inf
+!endif
+INF  MdeModulePkg/Core/Pei/PeiMain.inf
+INF  UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+INF  FILE_GUID = $(UP_CPU_PEI_GUID) UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (apriori_block
+      (identifier)
+      (inf_statement
+        (field
+          (compound_word
+            (bare_word)))))
+    (if_directive
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier)))))
+    (inf_statement
+      (field
+        (compound_word
+          (bare_word))))
+    (endif_directive)
+    (inf_statement
+      (field
+        (compound_word
+          (bare_word))))
+    (inf_statement
+      (field
+        (compound_word
+          (bare_word))))
+    (inf_statement
+      (key_value_pair
+        (field
+          (compound_word
+            (bare_word)))
+        (field
+          (compound_word
+            (macro_invocation
+              (identifier)))))
+      (field
+        (compound_word
+          (bare_word))))))
+
+================================================================================
+FILE FV_IMAGE with a nested SECTION GUIDED encapsulation containing two
+leaf SECTION FV_IMAGE entries (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[FV.FVMAIN_COMPACT]
+FvNameGuid         = 48DB5E17-707C-472D-91CD-1613E7EF51B0
+
+FILE FV_IMAGE = 9E21FD93-9C72-4c15-8C4B-E77F1DB2D792 {
+   SECTION GUIDED EE4E5898-3914-4259-9D6E-DC7BD79403CF PROCESSING_REQUIRED = TRUE {
+     SECTION FV_IMAGE = PEIFV
+     SECTION FV_IMAGE = DXEFV
+   }
+ }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (file_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (field
+        (compound_word
+          (bare_word)))
+      (file_block
+        (section_statement
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (compound_word
+                (bare_word))))
+          (file_block
+            (section_statement
+              (field
+                (compound_word
+                  (bare_word)))
+              (value
+                (raw_text)))
+            (section_statement
+              (field
+                (compound_word
+                  (bare_word)))
+              (value
+                (raw_text)))))))))
+
+================================================================================
+FILE DRIVER with a leaf SECTION PE32 entry (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[FV.FVMAIN_COMPACT]
+FILE DRIVER = 5D695E11-9B3F-4b83-B25F-4A8D5D69BE07 {
+  SECTION PE32 = Intel3.5/EFIX64/E3522X2.EFI
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (file_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (field
+        (compound_word
+          (bare_word)))
+      (file_block
+        (section_statement
+          (field
+            (compound_word
+              (bare_word)))
+          (value
+            (raw_text)))))))

@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "fdf",
+      "camelcase": "Fdf",
+      "scope": "source.fdf",
+      "path": ".",
+      "file-types": ["fdf"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

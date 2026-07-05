@@ -1,0 +1,311 @@
+================================================================================
+[Defines] with !include, and a [FD] section with macro-valued assignments
+plus a region shortcut + FV region type (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[Defines]
+!include OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
+
+[FD.OVMF]
+BaseAddress   = $(FW_BASE_ADDRESS)
+Size          = $(FW_SIZE)
+ErasePolarity = 1
+BlockSize     = $(BLOCK_SIZE)
+NumBlocks     = $(FW_BLOCKS)
+
+$(VARS_SIZE)|$(FVMAIN_SIZE)
+FV = FVMAIN_COMPACT
+
+$(SECFV_OFFSET)|$(SECFV_SIZE)
+FV = SECFV
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (include_directive
+      (field
+        (compound_word
+          (bare_word)))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))))
+      (pipe_field
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))))
+      (pipe_field
+        (macro_invocation
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))))
+
+================================================================================
+SET statement with an arithmetic expression over PCDs and a macro
+(OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[FD.MEMFD]
+SET gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase = $(MEMFD_BASE_ADDRESS) +  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfWorkAreaBase + gUefiOvmfPkgTokenSpaceGuid.PcdOvmfConfidentialComputingWorkAreaHeader
+SET gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaSize = gUefiOvmfPkgTokenSpaceGuid.PcdOvmfWorkAreaSize - gUefiOvmfPkgTokenSpaceGuid.PcdOvmfConfidentialComputingWorkAreaHeader
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (set_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (binary_expression
+        (binary_expression
+          (field
+            (compound_word
+              (macro_invocation
+                (identifier))))
+          (field
+            (compound_word
+              (bare_word))))
+        (field
+          (compound_word
+            (bare_word)))))
+    (set_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (binary_expression
+        (field
+          (compound_word
+            (bare_word)))
+        (field
+          (compound_word
+            (bare_word)))))))
+
+================================================================================
+Region shortcut using dotted PCD names on both sides of the pipe
+(EmulatorPkg/EmulatorPkg.fdf)
+================================================================================
+
+[FD.EMULATOR]
+gEmulatorPkgTokenSpaceGuid.PcdEmuFlashNvStorageVariableBase|gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableSize
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (bare_word)))))
+
+================================================================================
+DATA array with !if/!endif interspersed among the byte list
+(ArmVirtPkg/ArmVirtQemuKernel.fdf)
+================================================================================
+
+[FD.ARMVIRT]
+0x00000000|0x00008000
+DATA = {
+  0x01, 0x00, 0x00, 0x10,                         # code0: adr x1, .
+  0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, # text_offset: 512 KB
+!if $(FD_SIZE_IN_MB) == 2
+  0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, # image_size: 2 MB
+!endif
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # flags
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (bare_word)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (array
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (comment)
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (comment)
+          (if_directive
+            (binary_expression
+              (field
+                (compound_word
+                  (macro_invocation
+                    (identifier))))
+              (field
+                (compound_word
+                  (bare_word)))))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (comment)
+          (endif_directive)
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (comment))))))

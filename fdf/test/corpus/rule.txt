@@ -1,0 +1,252 @@
+================================================================================
+[Rule.*] FILE block with plain rule lines: bare words, a path with two
+macros, and Key=Value / Key = Value pairs (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[Rule.Common.PEIM]
+  FILE PEIM = $(NAMED_GUID) {
+     PEI_DEPEX PEI_DEPEX Optional        $(INF_OUTPUT)/$(MODULE_NAME).depex
+     PE32      PE32   Align=Auto         $(INF_OUTPUT)/$(MODULE_NAME).efi
+     UI       STRING="$(MODULE_NAME)" Optional
+     VERSION  STRING="$(INF_VERSION)" Optional BUILD_NUM=$(BUILD_NUMBER)
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (file_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))))
+      (file_block
+        (rule_line
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (macro_invocation
+                (identifier))
+              (bare_word)
+              (macro_invocation
+                (identifier))
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (compound_word
+                (bare_word)))))
+        (rule_line
+          (field
+            (compound_word
+              (macro_invocation
+                (identifier))
+              (bare_word)
+              (macro_invocation
+                (identifier))
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (string)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (string)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (compound_word
+                (macro_invocation
+                  (identifier))))))))))
+
+================================================================================
+[Rule.*] rule line ending in a bare `|.extension` shorthand, with spaces
+around `=` in a Key = Value pair (OvmfPkg/OvmfPkgX64.fdf)
+================================================================================
+
+[Rule.Common.USER_DEFINED.RESET_VECTOR]
+  FILE RAW = $(NAMED_GUID) {
+    RAW BIN   Align = 16   |.bin
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (file_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))))
+      (file_block
+        (rule_line
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (key_value_pair
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (compound_word
+                (bare_word))))
+          (field
+            (compound_word
+              (bare_word))))))))
+
+================================================================================
+[Rule.*] implicit (keyword-less) SECTION encapsulation --
+`COMPRESS PI_STD { GUIDED { ... } }` (EmulatorPkg/EmulatorPkg.fdf)
+================================================================================
+
+[Rule.Common.UEFI_DRIVER]
+  FILE DRIVER = $(NAMED_GUID) {
+    DXE_DEPEX    DXE_DEPEX Optional      $(INF_OUTPUT)/$(MODULE_NAME).depex
+    COMPRESS PI_STD {
+      GUIDED {
+        PE32     PE32                    $(INF_OUTPUT)/$(MODULE_NAME).efi
+        UI       STRING="$(MODULE_NAME)" Optional
+      }
+    }
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (file_statement
+      (field
+        (compound_word
+          (bare_word)))
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))))
+      (file_block
+        (rule_line
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (macro_invocation
+                (identifier))
+              (bare_word)
+              (macro_invocation
+                (identifier))
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word)))
+          (file_block
+            (rule_line
+              (field
+                (compound_word
+                  (bare_word)))
+              (file_block
+                (rule_line
+                  (field
+                    (compound_word
+                      (bare_word)))
+                  (field
+                    (compound_word
+                      (bare_word)))
+                  (field
+                    (compound_word
+                      (macro_invocation
+                        (identifier))
+                      (bare_word)
+                      (macro_invocation
+                        (identifier))
+                      (bare_word)))
+                  (field
+                    (compound_word
+                      (bare_word)))
+                  (key_value_pair
+                    (field
+                      (compound_word
+                        (bare_word)))
+                    (field
+                      (string)))
+                  (field
+                    (compound_word
+                      (bare_word))))))))))))

@@ -1,0 +1,24 @@
+{
+  "name": "tree-sitter-edk2-fdf",
+  "version": "0.0.1",
+  "description": "Tree-sitter grammar for EDK II Flash Description (.fdf) files",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": ["tree-sitter", "edk2", "uefi"],
+  "license": "MIT",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.26.10"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.fdf",
+      "file-types": ["fdf"],
+      "highlights": "queries/highlights.scm"
+    }
+  ]
+}
