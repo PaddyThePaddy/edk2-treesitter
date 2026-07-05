@@ -1,0 +1,192 @@
+================================================================================
+goto, numeric, subtitle, text (NetworkPkg/VlanConfigDxe/VlanConfig.vfr)
+================================================================================
+
+formset
+  guid      = VLAN_CONFIG_FORM_SET_GUID,
+  title     = STRING_TOKEN(STR_VLAN_FORM_SET_TITLE),
+  help      = STRING_TOKEN(STR_VLAN_FORM_SET_TITLE_HELP),
+
+  form formid = VLAN_HEAD_FORM_ID,
+    title  = STRING_TOKEN(STR_VLAN_FORM_TITLE);
+
+    goto VLAN_CONFIGURATION_FORM_ID,
+    prompt = STRING_TOKEN (STR_GET_CURRENT_SETTING),
+    help   = STRING_TOKEN (STR_GET_CURRENT_SETTING_HELP),
+    flags  = INTERACTIVE,
+    key    = VLAN_UPDATE_QUESTION_ID;
+
+  endform;
+
+  form formid = VLAN_CONFIGURATION_FORM_ID,
+    title = STRING_TOKEN(STR_VLAN_FORM_TITLE);
+
+    subtitle text = STRING_TOKEN(STR_VLAN_CREATE_VLAN);
+
+    numeric varid   = VlanNvData.VlanId,
+            prompt  = STRING_TOKEN(STR_VLAN_VID_PROMPT),
+            help    = STRING_TOKEN(STR_VLAN_VID_HELP),
+            minimum = 0,
+            maximum = 4094,
+    endnumeric;
+
+    text
+      help   = STRING_TOKEN(STR_VLAN_ADD_VLAN_HELP),
+      text   = STRING_TOKEN(STR_VLAN_ADD_VLAN_PROMPT),
+      flags  = INTERACTIVE,
+      key    = VLAN_ADD_QUESTION_ID;
+
+  endform;
+endformset;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (formset_statement
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (function_call
+        name: (compound_word)
+        argument: (field
+          (compound_word))))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (function_call
+        name: (compound_word)
+        argument: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word)))))
+    (statement
+      keyword: (compound_word)
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word))))
+      (statement
+        keyword: (compound_word))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word)))))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word)))))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (field
+          (compound_word)))
+      (field
+        (compound_word))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word))))

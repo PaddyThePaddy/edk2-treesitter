@@ -1,0 +1,66 @@
+================================================================================
+Simple #string/#language on separate lines (MdeModulePkg/Bus/Spi/SpiBus/SpiBus.uni)
+================================================================================
+
+// /** @file
+//
+// Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.<BR>
+//
+// SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+// **/
+
+#string STR_PROPERTIES_MODULE_NAME
+#language en-US   "SPI Bus driver"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string))))
+
+================================================================================
+#string and #language on one line (MdeModulePkg/MdeModulePkg.uni)
+================================================================================
+
+#string STR_PACKAGE_ABSTRACT            #language en-US "Provides the modules that conform to UEFI/PI Industry standards"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string))))
+
+================================================================================
+Multi-line concatenated string under one #language (MdeModulePkg/MdeModulePkg.uni)
+================================================================================
+
+#string STR_gEfiMdeModulePkgTokenSpaceGuid_PcdLoadModuleAtFixAddressEnable_HELP  #language en-US "Flag of enabling/disabling the feature of Loading Module at Fixed Address.<BR><BR>\n"
+                                                                                                 "0xFFFFFFFFFFFFFFFF: Enable the feature as fixed offset to TOLM.<BR>\n"
+                                                                                                 "0: Disable the feature.<BR>\n"
+                                                                                                 "Other Value:        Enable the feature as fixed absolute address, and the value is the top memory address.<BR>"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string)
+      (string)
+      (string)
+      (string))))

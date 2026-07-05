@@ -1,0 +1,220 @@
+================================================================================
+oneof read/write with cond/get/set/map built-ins
+(MdeModulePkg/Universal/DriverSampleDxe/Vfr.vfr)
+================================================================================
+
+formset
+  guid = X,
+  title = Y,
+  help = Z,
+
+  form formid = 1,
+    title = W;
+
+    oneof varid = MyIfrNVData.SerialPortNo,
+      prompt  = STRING_TOKEN(STR_SERIAL_PORT),
+      help    = STRING_TOKEN(STR_ONE_OF_HELP),
+
+      read    cond (get(MyIfrNVData.SerialPortStatus) != 0 ? 0 : cond ((get(MyIfrNVData.SerialPortIo) & 0xF00) >> 0x8 == get(MyIfrNVData.SerialPortIrq) - 1 ? UNDEFINED : map (get(MyIfrNVData.SerialPortIo) : 0x3f8,1; 0x2F8,2; 0x3E8,3; 0x2E8,4;)));
+      write   set(MyIfrNVData.SerialPortStatus, pushthis != 0) AND set(MyIfrNVData.SerialPortIo, map (pushthis : 1,0x3F8; 2,0x2F8; 3,0x3E8; 4,0x2E8;)) AND set (MyIfrNVData.SerialPortIrq, map (pushthis: 1,4; 2,3; 3,4; 4,3;));
+
+      option text = STRING_TOKEN(STR_SERIAL_PORT_DISABLE), value = 0x0, flags = DEFAULT;
+    endoneof;
+  endform;
+endformset;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (formset_statement
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (statement
+        keyword: (compound_word)
+        (function_call
+          name: (compound_word)
+          argument: (ternary_expression
+            condition: (binary_expression
+              left: (function_call
+                name: (compound_word)
+                argument: (field
+                  (compound_word)))
+              right: (field
+                (compound_word)))
+            consequence: (field
+              (compound_word))
+            alternative: (function_call
+              name: (compound_word)
+              argument: (ternary_expression
+                condition: (binary_expression
+                  left: (binary_expression
+                    left: (parenthesized_expression
+                      (binary_expression
+                        left: (function_call
+                          name: (compound_word)
+                          argument: (field
+                            (compound_word)))
+                        right: (field
+                          (compound_word))))
+                    right: (field
+                      (compound_word)))
+                  right: (binary_expression
+                    left: (function_call
+                      name: (compound_word)
+                      argument: (field
+                        (compound_word)))
+                    right: (field
+                      (compound_word))))
+                consequence: (field
+                  (compound_word))
+                alternative: (map_expression
+                  condition: (function_call
+                    name: (compound_word)
+                    argument: (field
+                      (compound_word)))
+                  key: (field
+                    (compound_word))
+                  value: (field
+                    (compound_word))
+                  key: (field
+                    (compound_word))
+                  value: (field
+                    (compound_word))
+                  key: (field
+                    (compound_word))
+                  value: (field
+                    (compound_word))
+                  key: (field
+                    (compound_word))
+                  value: (field
+                    (compound_word))))))))
+      (statement
+        keyword: (compound_word)
+        (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))
+          argument: (binary_expression
+            left: (field
+              (compound_word))
+            right: (field
+              (compound_word))))
+        (field
+          (compound_word))
+        (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))
+          argument: (map_expression
+            condition: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))))
+        (field
+          (compound_word))
+        (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))
+          argument: (map_expression
+            condition: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word)))))
+      (field
+        (compound_word))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word))
+    (statement
+      keyword: (compound_word))))

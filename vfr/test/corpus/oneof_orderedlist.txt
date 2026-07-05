@@ -1,0 +1,199 @@
+================================================================================
+oneof/option and orderedlist/option/default (no `;` before body)
+(MdeModulePkg/Universal/DriverSampleDxe/Vfr.vfr; spec 2.11.6.8 example)
+================================================================================
+
+formset
+  guid = X,
+  title = Y,
+  help = Z,
+
+  form formid = 1,
+    title = W;
+
+    oneof varid  = MyIfrNVData.BootOrderLarge,
+      prompt      = STRING_TOKEN(STR_ONE_OF_PROMPT),
+      help        = STRING_TOKEN(STR_ONE_OF_HELP),
+      option text = STRING_TOKEN(STR_BOOT_ORDER1), value = 0x0, flags = 0;
+      option text = STRING_TOKEN(STR_BOOT_ORDER2), value = 0x1, flags = 0;
+    endoneof;
+
+    orderedlist
+      varid  = STestPriData.mField3,
+      prompt = STRING_TOKEN(STR_BOOT_OPTIONS),
+      help   = STRING_TOKEN(STR_BOOT_OPTIONS),
+
+      option text = STRING_TOKEN(STR_BOOT_OPTION2), value = 2, flags = RESET_REQUIRED;
+      option text = STRING_TOKEN(STR_BOOT_OPTION1), value = 1, flags = RESET_REQUIRED;
+      default = {1, 2, 3, 4},
+    endlist;
+  endform;
+endformset;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (formset_statement
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (function_call
+          name: (compound_word)
+          argument: (field
+            (compound_word))))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word))))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word))))
+      (statement
+        keyword: (compound_word))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (statement
+          keyword: (compound_word)
+          (key_value_pair
+            key: (field
+              (compound_word))
+            value: (function_call
+              name: (compound_word)
+              argument: (field
+                (compound_word))))
+          (key_value_pair
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word)))
+          (key_value_pair
+            key: (field
+              (compound_word))
+            value: (field
+              (compound_word))))
+        (field
+          (compound_word))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word))))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (array
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word)))))
+      end_keyword: (compound_word))
+    (statement
+      keyword: (compound_word))))

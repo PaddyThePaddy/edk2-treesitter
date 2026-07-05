@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "vfr",
+      "camelcase": "Vfr",
+      "scope": "source.vfr",
+      "path": ".",
+      "file-types": ["vfr"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

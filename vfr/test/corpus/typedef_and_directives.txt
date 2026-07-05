@@ -1,0 +1,99 @@
+================================================================================
+#include (quoted and angle-bracket), typedef struct, backslash-continued #define
+with a GUID literal
+(MdeModulePkg/Library/BootDiscoveryPolicyUiLib/BootDiscoveryPolicyUiLibVfr.Vfr;
+MdeModulePkg/Universal/DriverSampleDxe/Vfr.vfr)
+================================================================================
+
+///** @file
+//
+//  Formset for Boot Discovery Policy UI
+//
+//**/
+
+#include <Uefi/UefiMultiPhase.h>
+#include "Guid/BootDiscoveryPolicy.h"
+#include <Guid/HiiBootMaintenanceFormset.h>
+
+typedef struct {
+  UINT32 BootDiscoveryPolicy;
+} BOOT_DISCOVERY_POLICY_VARSTORE_DATA;
+
+#define EFI_USER_INFO_ACCESS_SETUP_ADMIN_GUID \
+  { 0x85b75607, 0xf7ce, 0x471e, { 0xb7, 0xe4, 0x2a, 0xea, 0x5f, 0x72, 0x32, 0xee } }
+
+formset
+  guid      = BOOT_DISCOVERY_POLICY_MGR_FORMSET_GUID,
+  title     = STRING_TOKEN(STR_FORM_BDP_MAIN_TITLE),
+  help      = STRING_TOKEN(STR_FORM_BDP_MAIN_TITLE),
+endformset;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (include_directive
+    path: (system_path))
+  (include_directive
+    path: (field
+      (string)))
+  (include_directive
+    path: (system_path))
+  (typedef_definition
+    (struct_field
+      type: (field
+        (compound_word))
+      name: (identifier))
+    alias: (identifier))
+  (define_directive
+    name: (identifier)
+    value: (field
+      (array
+        (field
+          (compound_word))
+        (field
+          (compound_word))
+        (field
+          (compound_word))
+        (field
+          (array
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word))
+            (field
+              (compound_word)))))))
+  (formset_statement
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (function_call
+        name: (compound_word)
+        argument: (field
+          (compound_word))))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (function_call
+        name: (compound_word)
+        argument: (field
+          (compound_word))))))

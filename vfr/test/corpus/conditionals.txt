@@ -1,0 +1,143 @@
+================================================================================
+suppressif/ideqval, date with default literal, inconsistentif/AND/ideqvallist
+(MdeModulePkg/Universal/DriverSampleDxe/Vfr.vfr)
+================================================================================
+
+formset
+  guid = X,
+  title = Y,
+  help = Z,
+
+  form formid = 1,
+    title = W;
+  endform;
+
+  suppressif ideqval MyIfrNVData.BootOrderLarge == 0;
+    form formid = 2,
+      title = STRING_TOKEN(STR_FORM2_TITLE);
+
+      date
+        name    = Date,
+        prompt  = STRING_TOKEN(STR_DATE_PROMPT),
+        help    = STRING_TOKEN(STR_DATE_HELP),
+        flags   = STORAGE_TIME,
+        default = 2004/1/1,
+
+        inconsistentif prompt = STRING_TOKEN(STR_ERROR_POPUP),
+          ideqval Date.Day == 31
+          AND
+          ideqvallist Date.Month == 2 4 6 9 11
+        endif;
+      enddate;
+
+    endform;
+  endif;
+endformset;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (formset_statement
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (key_value_pair
+      key: (field
+        (compound_word))
+      value: (field
+        (compound_word)))
+    (statement
+      keyword: (compound_word)
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word)))
+      (key_value_pair
+        key: (field
+          (compound_word))
+        value: (field
+          (compound_word))))
+    (statement
+      keyword: (compound_word))
+    (conditional_statement
+      condition: (binary_expression
+        left: (ideqval_expression
+          operand: (field
+            (compound_word)))
+        right: (field
+          (compound_word)))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word)))))
+      (statement
+        keyword: (compound_word)
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (function_call
+            name: (compound_word)
+            argument: (field
+              (compound_word))))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (compound_word)))
+        (key_value_pair
+          key: (field
+            (compound_word))
+          value: (field
+            (date)))
+        (conditional_statement
+          (key_value_pair
+            key: (field
+              (compound_word))
+            value: (function_call
+              name: (compound_word)
+              argument: (field
+                (compound_word))))
+          condition: (binary_expression
+            left: (binary_expression
+              left: (ideqval_expression
+                operand: (field
+                  (compound_word)))
+              right: (field
+                (compound_word)))
+            right: (ideqvallist_expression
+              field: (field
+                (compound_word))
+              values: (value_list))))
+        end_keyword: (compound_word))
+      (statement
+        keyword: (compound_word)))))

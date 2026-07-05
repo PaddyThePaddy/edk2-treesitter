@@ -1,0 +1,96 @@
+================================================================================
+Two #langdef entries and a multi-language #string block
+(MdeModulePkg/Library/CustomizedDisplayLib/CustomizedDisplayLib.uni)
+================================================================================
+
+/=#
+
+#langdef en-US "English"
+#langdef fr-FR "Français"
+
+#string ENTER_STRING                   #language en-US  "<Enter>=Select Entry"
+                                       #language fr-FR  "<Enter>=Choisir l'Entrée"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ctrlchar_directive
+    (control_char))
+  (langdef_directive
+    (language_code)
+    (string))
+  (langdef_directive
+    (language_code)
+    (string))
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string))
+    (language_entry
+      (language_code)
+      (string))))
+
+================================================================================
+#include with a quoted path (ArmPkg/Universal/Smbios/SmbiosMiscDxe/SmbiosMiscDxeStrings.uni)
+================================================================================
+
+#include "Type00/MiscBiosVendor.uni"
+#include "Type01/MiscSystemManufacturer.uni"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_directive
+    (string))
+  (include_directive
+    (string)))
+
+================================================================================
+Private-use language tag with a single-letter first segment, `x-UEFI-ns`
+(NetworkPkg/IScsiDxe/IScsiConfigStrings.uni)
+================================================================================
+
+/=#
+
+#langdef en-US "English"
+#langdef x-UEFI-ns "UefiNameSpace"
+
+#string STR_ISCSI_CONFIG_INIT_NAME      #language en-US "iSCSI Initiator Name"
+                                        #language x-UEFI-ns "iSCSIInitiatorName"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ctrlchar_directive
+    (control_char))
+  (langdef_directive
+    (language_code)
+    (string))
+  (langdef_directive
+    (language_code)
+    (string))
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string))
+    (language_entry
+      (language_code)
+      (string))))
+
+================================================================================
+String with literal, unescaped internal quotes showing example CSV output
+(ShellPkg/Library/UefiShellLevel3CommandsLib/UefiShellLevel3CommandsLib.uni)
+================================================================================
+
+#string STR_CLS_OUTPUT_SFO        #language en-US "ConOutAttribInfo,"%d","%d","%d"\r\n"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (string_directive
+    (identifier)
+    (language_entry
+      (language_code)
+      (string))))

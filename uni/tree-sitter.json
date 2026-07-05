@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "uni",
+      "camelcase": "Uni",
+      "scope": "source.uni",
+      "path": ".",
+      "file-types": ["uni"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}
