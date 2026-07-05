@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "inf",
+      "camelcase": "Inf",
+      "scope": "source.inf",
+      "path": ".",
+      "file-types": ["inf"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

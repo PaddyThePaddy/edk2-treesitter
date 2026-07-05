@@ -1,0 +1,146 @@
+================================================================================
+[Guids]/[Protocols]/[Pcd] with ## USAGE trailing/leading comments (PcdDxe.inf)
+================================================================================
+
+[Guids]
+  gPcdDataBaseHobGuid                           ## SOMETIMES_CONSUMES  ## HOB
+  gPcdDataBaseSignatureGuid                     ## CONSUMES  ## GUID  # PCD database signature GUID.
+  gEfiMdeModulePkgTokenSpaceGuid                ## SOMETIMES_CONSUMES  ## GUID
+
+[Protocols]
+  gPcdProtocolGuid                              ## PRODUCES
+  gEfiPcdProtocolGuid                           ## PRODUCES
+  ## NOTIFY
+  ## SOMETIMES_CONSUMES
+  gEdkiiVariablePolicyProtocolGuid
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVpdBaseAddress      ## SOMETIMES_CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVpdBaseAddress64    ## SOMETIMES_CONSUMES
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word)))))
+  (comment)
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (comment)
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word)))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word)))))
+  (comment))
+
+================================================================================
+[Binaries.Ia32] pipe-list entries (IntelFsp2Pkg FspSecCoreI.inf)
+================================================================================
+
+[Binaries.Ia32]
+  RAW|Vtf0/Bin/ResetVec.ia32.raw |GCC
+
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFsp2Pkg/IntelFsp2Pkg.dec
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (bare_word))
+      (pipe_field
+        (bare_word))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))))
+
+================================================================================
+[UserExtensions.TianoCore."ExtraFiles"] with quoted tag segment (PcdDxe.inf)
+================================================================================
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  PcdDxeExtra.uni
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (string))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))))

@@ -1,0 +1,98 @@
+================================================================================
+[Depex] TRUE (MdeModulePkg PcdDxe.inf)
+================================================================================
+
+[Depex]
+  TRUE
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))))
+
+================================================================================
+[Depex] a single GUID (ArmVirtPkg XenioFdtDxe.inf)
+================================================================================
+
+[Depex]
+  gFdtClientProtocolGuid
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))))
+
+================================================================================
+[Depex] simple AND (PcAtChipsetPkg PcatRealTimeClockRuntimeDxe.inf)
+================================================================================
+
+[Depex]
+  gEfiVariableArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (depex_expression
+      (depex_and
+        (field
+          (compound_word
+            (bare_word)))
+        (field
+          (compound_word
+            (bare_word)))))))
+
+================================================================================
+[Depex] multi-line AND chain with a parenthesized OR (SecurityPkg TcgMor.inf)
+================================================================================
+
+[Depex]
+  gEfiVariableArchProtocolGuid AND
+  gEfiVariableWriteArchProtocolGuid AND
+  ( gEfiTcgProtocolGuid OR gEfiTcg2ProtocolGuid )
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (depex_expression
+      (depex_and
+        (depex_and
+          (field
+            (compound_word
+              (bare_word)))
+          (field
+            (compound_word
+              (bare_word))))
+        (depex_paren
+          (depex_or
+            (field
+              (compound_word
+                (bare_word)))
+            (field
+              (compound_word
+                (bare_word)))))))))

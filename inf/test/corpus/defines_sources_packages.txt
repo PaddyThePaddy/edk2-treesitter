@@ -1,0 +1,203 @@
+================================================================================
+[Defines], [Sources], [Packages], [LibraryClasses] (MdeModulePkg PcdDxe.inf)
+================================================================================
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PcdDxe
+  MODULE_UNI_FILE                = PcdDxe.uni
+  FILE_GUID                      = 80CF7257-87AB-47f9-A3FE-D50B76D89541
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 4.0
+  PCD_IS_DRIVER                  = DXE_PCD_DRIVER
+  ENTRY_POINT                    = PcdDxeInit
+
+[Sources]
+  Pcd.c
+  Service.c
+  Service.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiRuntimeServicesTableLib
+  BaseMemoryLib
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))))
+
+================================================================================
+DEFINE macro plus a [Sources] entry with an embedded macro reference,
+no separating whitespace (BaseFdtLib.inf)
+================================================================================
+
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = BaseFdtLib
+  LIBRARY_CLASS                  = FdtLib
+
+  DEFINE FDT_LIB_PATH            = libfdt/libfdt
+
+[Sources]
+  FdtLib.c
+  # header Wrapper files
+  limits.h
+
+  $(FDT_LIB_PATH)/fdt.c
+  $(FDT_LIB_PATH)/fdt_addresses.c
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (define_statement
+      (identifier)
+      (value
+        (raw_text))))
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (macro_invocation
+            (identifier))
+          (bare_word))))))

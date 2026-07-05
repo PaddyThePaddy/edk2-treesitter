@@ -1,0 +1,89 @@
+================================================================================
+[BuildOptions] value with an embedded macro reference (OvmfPkg ResetVector.inf)
+================================================================================
+
+[BuildOptions]
+   *_*_IA32_NASMB_FLAGS = -I$(WORKSPACE)/UefiCpuPkg/ResetVector/Vtf0/
+   *_*_X64_NASMB_FLAGS = -I$(WORKSPACE)/UefiCpuPkg/ResetVector/Vtf0/
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)
+        (macro_invocation
+          (identifier))
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)
+        (macro_invocation
+          (identifier))
+        (raw_text)))))
+
+================================================================================
+[BuildOptions] multi-word flag string with two embedded macros
+(CryptoPkg OpensslLib.inf)
+================================================================================
+
+[BuildOptions]
+  MSFT:*_*_IA32_CC_FLAGS   = -U_WIN32 -U_WIN64 -U_MSC_VER $(OPENSSL_FLAGS) $(OPENSSL_FLAGS_NOASM) /wd4090
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)
+        (macro_invocation
+          (identifier))
+        (raw_text)
+        (macro_invocation
+          (identifier))
+        (raw_text)))))
+
+================================================================================
+[BuildOptions] entirely empty value (MdeModulePkg RegularExpressionDxe.inf)
+================================================================================
+
+[BuildOptions]
+  # Not add -Wno-error=maybe-uninitialized option for XCODE
+  # XCODE doesn't know this option
+  XCODE:*_*_*_CC_FLAGS =
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (comment)
+    (comment)
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))))
