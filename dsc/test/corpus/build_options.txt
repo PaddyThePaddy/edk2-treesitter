@@ -1,0 +1,101 @@
+================================================================================
+[BuildOptions] with the `==` replace operator, plus a genuinely empty value
+(EmulatorPkg/EmulatorPkg.dsc)
+================================================================================
+
+[BuildOptions]
+  GCC:*_CLANGDWARF_*_GENFWHII_FLAGS == --hiipackage
+  GCC:*_CLANGDWARF_*_DLINK2_FLAGS  ==
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))))
+
+================================================================================
+[BuildOptions] value mixing raw text, a macro reference, and a trailing
+quoted string containing balanced parens (EmulatorPkg/EmulatorPkg.dsc)
+================================================================================
+
+[BuildOptions]
+  XCODE:*_*_X64_CC_FLAGS = -O0 -target x86_64-apple-darwin -I$(WORKSPACE)/EmulatorPkg/Unix/Host/X11IncludeHack "-DEFIAPI=__attribute__((ms_abi))"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)
+        (macro_invocation
+          (identifier))
+        (raw_text)
+        (string)))))
+
+================================================================================
+[BuildOptions] multi-tag section header with arch/family/module-type
+qualifiers (OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[BuildOptions.common.EDKII.DXE_RUNTIME_DRIVER, BuildOptions.common.EDKII.DXE_DRIVER]
+  GCC:*_*_*_DLINK_FLAGS = -z common-page-size=0x1000
+  XCODE:*_*_*_MTOC_FLAGS = -align 0x1000
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier)))
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))))

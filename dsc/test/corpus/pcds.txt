@@ -1,0 +1,67 @@
+================================================================================
+[PcdsDynamicHii] entry with a comma-separated attribute list in its last
+pipe-field (ArmVirtPkg/ArmVirtCloudHv.dsc)
+================================================================================
+
+[PcdsDynamicHii]
+  gUefiOvmfPkgTokenSpaceGuid.PcdForceNoAcpi|L"ForceNoAcpi"|gOvmfVariableGuid|0x0|FALSE|NV,BS
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (string))
+      (pipe_field
+        (bare_word))
+      (pipe_field
+        (bare_word))
+      (pipe_field
+        (bare_word))
+      (pipe_field
+        (bare_word)))))
+
+================================================================================
+PCD value using the GUID() value-constructor macro, inside a Components
+<PcdsPatchableInModule> override block (FmpDevicePkg/FmpDevicePkg.dsc)
+================================================================================
+
+[Components]
+  FmpDevicePkg/FmpDxe/FmpDxeLib.inf {
+    <PcdsPatchableInModule>
+      gFmpDevicePkgTokenSpaceGuid.PcdFmpDeviceImageTypeIdGuid|{GUID("$(SYSTEM_FMP_ESRT_GUID)")}
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (pipe_field
+              (value_macro_call
+                (identifier)
+                (field
+                  (string))))))))))

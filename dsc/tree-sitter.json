@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "dsc",
+      "camelcase": "Dsc",
+      "scope": "source.dsc",
+      "path": ".",
+      "file-types": ["dsc"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

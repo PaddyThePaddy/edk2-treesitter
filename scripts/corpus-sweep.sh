@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Parse every real-world file of a given extension under corpus/edk2 with a
-# grammar, and report how many produce parser ERROR nodes. This is the
-# "does it survive contact with the real world" check CLAUDE.md's test-first
-# workflow calls for, generalized across formats.
+# grammar, and report how many produce parser ERROR or MISSING nodes. This
+# is the "does it survive contact with the real world" check CLAUDE.md's
+# test-first workflow calls for, generalized across formats.
 #
 # Usage: scripts/corpus-sweep.sh <lang> [extension]
 # Examples:
@@ -44,10 +44,10 @@ total=0
 failed=0
 while IFS= read -r -d '' f; do
   total=$((total + 1))
-  errors="$(npx --no-install tree-sitter parse "$f" 2>/dev/null | grep -c ERROR || true)"
+  errors="$(npx --no-install tree-sitter parse "$f" 2>/dev/null | grep -cE 'ERROR|MISSING' || true)"
   if [ "$errors" != "0" ]; then
     failed=$((failed + 1))
-    echo "FAIL ($errors error node(s)): $f"
+    echo "FAIL ($errors error/missing node(s)): $f"
   fi
 done < <(find "$CORPUS" -iname "*.$EXT" -print0)
 

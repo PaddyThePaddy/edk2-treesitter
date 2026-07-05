@@ -1,0 +1,145 @@
+================================================================================
+[Defines] section, including a value containing literal `|` characters
+(OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[Defines]
+  PLATFORM_NAME                  = Ovmf
+  PLATFORM_GUID                  = 5a9e7754-d81b-49ea-85ad-69eaa7b1539b
+  PLATFORM_VERSION               = 0.1
+  DSC_SPECIFICATION              = 0x00010005
+  OUTPUT_DIRECTORY               = Build/OvmfX64
+  SUPPORTED_ARCHITECTURES        = X64
+  BUILD_TARGETS                  = NOOPT|DEBUG|RELEASE
+  SKUID_IDENTIFIER               = DEFAULT
+  FLASH_DEFINITION               = OvmfPkg/OvmfPkgX64.fdf
+
+  DEFINE SECURE_BOOT_ENABLE      = FALSE
+  DEFINE SMM_REQUIRE             = FALSE
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (value
+        (raw_text)))
+    (define_statement
+      (identifier)
+      (value
+        (raw_text)))
+    (define_statement
+      (identifier)
+      (value
+        (raw_text)))))
+
+================================================================================
+[SkuIds] pipe-list (OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[SkuIds]
+  0|DEFAULT
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (bare_word)))))
+
+================================================================================
+Multi-tag section header with a stray trailing comma before `]`
+(SecurityPkg/SecurityPkg.dsc)
+================================================================================
+
+[LibraryClasses.common.UEFI_DRIVER, LibraryClasses.common.DXE_RUNTIME_DRIVER,]
+  HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier)))
+      (tag
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (pipe_field
+        (bare_word)))))

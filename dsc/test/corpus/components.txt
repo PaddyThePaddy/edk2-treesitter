@@ -1,0 +1,178 @@
+================================================================================
+[Components] bare entry plus one with a <LibraryClasses> override block
+(OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[Components]
+  OvmfPkg/ResetVector/ResetVector.inf
+
+  OvmfPkg/Sec/SecMain.inf {
+    <LibraryClasses>
+      NULL|MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
+      BaseCryptLib|CryptoPkg/Library/BaseCryptLib/SecCryptLib.inf
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (pipe_field
+              (bare_word)))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (pipe_field
+              (bare_word))))))))
+
+================================================================================
+[Components] entry with a !if/!endif conditional nested inside its
+<LibraryClasses> block (OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[Components]
+  UefiCpuPkg/Universal/Acpi/S3Resume2Pei/S3Resume2Pei.inf {
+    <LibraryClasses>
+!if $(SMM_REQUIRE) == TRUE
+      LockBoxLib|MdeModulePkg/Library/SmmLockBoxLib/SmmLockBoxPeiLib.inf
+!endif
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (if_directive
+            (binary_expression
+              (field
+                (compound_word
+                  (macro_invocation
+                    (identifier))))
+              (field
+                (compound_word
+                  (bare_word)))))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (pipe_field
+              (bare_word)))
+          (endif_directive))))))
+
+================================================================================
+[Components] entry with a <Defines> FILE_GUID override using a macro value
+(OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[Components]
+  UefiCpuPkg/CpuMpPei/CpuMpPei.inf {
+    <Defines>
+      FILE_GUID = $(UP_CPU_PEI_GUID)
+
+    <LibraryClasses>
+      MpInitLib|UefiCpuPkg/Library/MpInitLibUp/MpInitLibUp.inf
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (statement
+      (field
+        (compound_word
+          (bare_word)))
+      (struct_block
+        (struct_tag_section
+          (struct_tag
+            (identifier))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (value
+              (macro_invocation
+                (identifier))))
+          (statement
+            (field
+              (compound_word
+                (bare_word))))
+          (statement
+            (field
+              (compound_word
+                (bare_word)))
+            (pipe_field
+              (bare_word))))))))
+
+================================================================================
+!if wrapping whole [Components] entries at the section-body level, not
+inside any block (OvmfPkg/OvmfPkgX64.dsc)
+================================================================================
+
+[Components]
+!if $(SMM_REQUIRE) == TRUE
+  MdeModulePkg/Universal/FaultTolerantWritePei/FaultTolerantWritePei.inf
+  MdeModulePkg/Universal/Variable/Pei/VariablePei.inf
+!endif
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (section
+    (section_header
+      (tag
+        (tag_segment
+          (identifier))))
+    (if_directive
+      (binary_expression
+        (field
+          (compound_word
+            (macro_invocation
+              (identifier))))
+        (field
+          (compound_word
+            (bare_word)))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (statement
+      (field
+        (compound_word
+          (bare_word))))
+    (endif_directive)))
